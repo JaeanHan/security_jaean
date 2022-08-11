@@ -11,8 +11,6 @@ import java.io.IOException;
 public class AuthFailHandler implements AuthenticationFailureHandler {
     @Override
     public void onAuthenticationFailure(HttpServletRequest request, HttpServletResponse response, AuthenticationException exception) throws IOException, ServletException {
-
-//        response.sendRedirect("/auth/signup");
         System.out.println(exception.getMessage());
         response.setCharacterEncoding("utf-8");
         response.setContentType("text/html; charset=utf-8");

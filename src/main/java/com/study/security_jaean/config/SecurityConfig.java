@@ -12,7 +12,6 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 @EnableWebSecurity // 기존의 WebSecurityConfigurerAdapter 비활성화하고 현제 시큐리티 설정을 따르겠다.
 @Configuration
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
-
     @Bean
     public PasswordEncoder passwordEncoder() {
         return new BCryptPasswordEncoder();
