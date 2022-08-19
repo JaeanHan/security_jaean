@@ -1,5 +1,6 @@
 package com.study.security_jaean.domain.user;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -19,6 +20,8 @@ public class User {
     private String user_name;
     private String user_email;
     private String user_id;
+    private String oauth_id;
+    @JsonIgnore
     private String user_password;
     private String user_roles;
     private String user_provider;
