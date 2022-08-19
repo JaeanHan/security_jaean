@@ -62,10 +62,13 @@
     <script type="text/javascript">
         let oEditors = [];
         nhn.husky.EZCreator.createInIFrame({
-        oAppRef: oEditors,
-        elPlaceHolder: "ir1",
-        sSkinURI: "/static/SmartEditor2Skin.html",
-        fCreator: "createSEditor2"
+            oAppRef: oEditors,
+            elPlaceHolder: "ir1",
+            sSkinURI: "/static/SmartEditor2Skin.html",
+            fCreator: "createSEditor2",
+            fOnAppLoad: () => {
+                oEditors.getById["ir1"].exec("PASTE_HTML", [`test`]);
+            }
         });
         
         const submitButton = document.querySelector(".submit");
