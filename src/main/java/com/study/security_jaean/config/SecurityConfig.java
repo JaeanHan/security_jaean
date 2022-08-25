@@ -28,16 +28,22 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http.csrf().disable();
-        http.headers().frameOptions().disable().addHeaderWriter(new StaticHeadersWriter("X-FRAME-OPTIONS", "ALLOW-FROM /**"));
-        http.addFilter(corsFilter);
+        http.headers().frameOptions().disable();
+//                .addHeaderWriter(new StaticHeadersWriter("X-FRAME-OPTIONS", "ALLOW-FROM /**"));
+//        http.addFilter(corsFilter);
         http.authorizeRequests()
                 .antMatchers("/api/v1/grant/test/user/**")
                 .access("hasRole('ROLE_USER') or hasRole('ROLE_MANAGER') or hasRole('ROLE_ADMIN')")
                 .antMatchers("/api/v1/grant/test/manager/**")
                 .access("hasRole('ROLE_MANAGER') or hasRole('ROLE_ADMIN')")
+
+                .antMatchers("/notice/addition", "notice/modification/**")
+                .access("hasRole('ROLE_ADMIN') or hasRole('ROLE_MANAGER')")
+//                .hasRole("ADMIN")
+
                 .antMatchers("/api/v1/grant/test/admin/**")
                 .access("hasRole('ROLE_ADMIN')")
-                .antMatchers("/", "/index", "/mypage/**") //우리가 지정한 요청
+                .antMatchers("/", "/index", "/mypage/**", "/notice/addition", "/notice/modification/**") //우리가 지정한 요청
                 .authenticated()                            // 인증을 거쳐라
                 .anyRequest()                               // 외 모든 요청은
                 .permitAll()                                // 모든 권한을 허용한다.

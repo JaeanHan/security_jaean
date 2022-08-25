@@ -15,11 +15,10 @@ public class NoticePageController {
         return"notice/notice";
     }
     @GetMapping("/addition")
-    @CrossOrigin
     public String loadNoticeInsert() {
         return"notice/notice_insert";
     }
-    @GetMapping("/{noticeCode}")
+    @GetMapping("/detail/{noticeCode}")
     public String loadNoticeDetail(@PathVariable String noticeCode) {
         return"notice/notice_detail";
     }

@@ -1,35 +1,25 @@
 <!DOCTYPE html>
-<html lang="ko">
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
   <head>
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>제목</title>
-    <link rel="stylesheet" href="/static/css/style.css" />
-    <link rel="stylesheet" href="/static/css/notice-header.css" />
+    <th:block th:replace="/notice/fragments/head"></th:block>
     <link rel="stylesheet" href="/static/css/notice.css" />
     <link rel="stylesheet" href="/static/css/notice-detail.css" />
 
     <script src="/static/js/service/HuskyEZCreator.js" charset="utf-8"></script>
   </head>
   <body>
-    <header>
-      <nav>
-        <button type="button" class="nav-list">홈</button>
-        <button type="button" class="nav-list">공지사항</button>
-      </nav>
-      <div class="auth-items">
-        <button type="button" class="auth-button signin">로그인</button>
-        <button type="button" class="auth-button signup">회원가입</button>
-      </div>
-    </header>
+  <th:block th:replace="/notice/fragments/header"></th:block>
     <main>
       <article>
         <section class="notice-detail-header">
           <h1 class="notice-detail-title">
             스프링 부트 공지사항 게시글 테스트
           </h1>
-          <div class="notice-detail-describtion">
+          <div class="notice-detail-description">
             <h3>작성자: junil</h3>
             <h3>작성일: 2022-08-19 19:17:00</h3>
             <h3>조회수: 10000</h3>
@@ -69,5 +59,6 @@
         </div>
       </article>
     </main>
+  <script type="text/javascript" src="/static/js/notice/notice-detail.js"></script>
   </body>
 </html>
